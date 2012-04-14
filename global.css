@@ -1,0 +1,7 @@
+.button {
+	border-radius: 50%; 
+	height: 80px;
+	width: 80px;
+	font-size: 45pt;
+	/* Red: #C00000, Yellow: #FFD700, Blue: #0276FD */
+}
