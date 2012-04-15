@@ -21,7 +21,7 @@ $(document).ready(function(){
 	floors = getUrlVars()["floors"]; // gets list of floors
 	current = getUrlVars()["current"]; // gets current floor
 	direction = getUrlVars()["direction"]; // gets direction if it exists
-	
+	$("#floorDisp").text(current);
 	var random_num = Math.floor(Math.random()*50);
 
 	if(color == undefined || floors.length == 0){
@@ -216,6 +216,7 @@ function goConnor(){
 	<img src="images/above.jpg"/>
 </div>
 
+<div class=floorNumber><font class=floorDisp id=floorDisp></font></div>
 
 <div class="confirmboxone">
 	Would you like to enter the elevator?<br /><br />
