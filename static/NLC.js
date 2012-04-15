@@ -7,28 +7,39 @@ $(document).ready(function() {
 		$("#done").css({"top": $(window).scrollTop() + 25});
 	});
 	//console.log($(window).scrollTop());
+	var current = getUrlVars()["current"];
+	if (current == undefined) {
+		current = 1;
+	}
+	if (current > 10) {
+		current = 10;
+	}
+	$("#floorDisp").text(current);
 	var click = {};
 	var colorUsed = [false, false, false, false];
 	var translation = ["R", "Y", "B", "G"];
 	for (var i = 1; i < 11; i++) {
-		(function(x) {
-			$("#floor" + x).click(function() {
-				var colorNum = Math.floor(Math.random()*4);
-				$("#floor" + x).css({"background-color": colors[colorNum]});
-				$("#floor" + x).unbind("click");
-				click[x] = colors[colorNum];
-				colorUsed[colorNum] = true;
-				var img = "";
-				for (var k = 0; k < 4; k++) {
-					if (colorUsed[k] == true) {
-						img = img + translation[k];
+		if (parseInt(i) !== parseInt(current)) {
+			(function(x) {
+				$("#floor" + x).click(function() {
+					$("#floorDisp").text("");
+					var colorNum = Math.floor(Math.random()*4);
+					$("#floor" + x).css({"background-color": colors[colorNum]});
+					$("#floor" + x).unbind("click");
+					click[x] = colors[colorNum];
+					colorUsed[colorNum] = true;
+					var img = "";
+					for (var k = 0; k < 4; k++) {
+						if (colorUsed[k] == true) {
+							img = img + translation[k];
+						}
 					}
-				}
-				$("#map").attr({"src": "img/" + img + ".png"});
-				//console.log(click);
-				//console.log(colorUsed);
-			});
-		})(i);
+					$("#map").attr({"src": "img/" + img + ".png"});
+					//console.log(click);
+					//console.log(colorUsed);
+				});
+			})(i);
+		}
 	}
 	$("#done").click(function() {
 		//$(window).animate({ scrollTop: 0 }, "slow");
@@ -40,7 +51,15 @@ $(document).ready(function() {
 		$("#interface").css({"pointer-events": "none"});
 		//setTimeout('$("#interface").hide()', 5000);
 		setTimeout('$("#interface").animate({opacity: 0.01}, 3000)', 1000);
-		setTimeout('$("#interface").hide()', 4000);
+		setTimeout('$("#interface").hide(); $("#done").hide();', 4000);
+		setTimeout('$("#return").show();', 4500)
+		$("#return").click(function() {
+			$("#return").hide();
+			$("#interface").show();
+			$("#interface").css({"opacity": 1})
+			$("#done").show();
+		});
+		//$("#return").show();
 		$("#lobby").click(function(e) {
 			//console.log(e);
 			var mult = window.innerWidth/1366;
@@ -96,21 +115,19 @@ $(document).ready(function() {
 				  alert('Load was performed.');
 			}); */
 			//window.location = "./above.html?color=green";
-			var newURL = "./above.html?color=" + floors[0];
-			var highlight = "";
-			if (floors.length > 1) {
-				highlight = highlight + floors[1];
-				for (var i = 2; i < floors.length; i++) {
-					highlight = highlight + "x";
-					highlight = highlight + floors[i];
+			if (floors.length > 0) {
+				var newURL = "./above.html?color=" + floors[0];
+				var highlight = "";
+				if (floors.length > 1) {
+					highlight = highlight + floors[1];
+					for (var i = 2; i < floors.length; i++) {
+						highlight = highlight + "x";
+						highlight = highlight + floors[i];
+					}
 				}
+				newURL = newURL + "&floors=" + highlight + "&current=" + current;
+				window.location = newURL;
 			}
-			var current = getUrlVars()["current"];
-			if (current == undefined) {
-				current = 1;
-			}
-			newURL = newURL + "&floors=" + highlight + "&current=" + current;
-			window.location = newURL;
 			//+ "?color=" + floors[0]
 			//$.post('./above.html', {'a': 'z'});
 			//color, floors, x is delimitors
