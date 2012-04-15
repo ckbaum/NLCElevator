@@ -1,67 +1,88 @@
 *{
 	font-family:Futura, sans-serif;
+	background:#888;
+}
+
+#wrapper{
+	position:relative;
+	top:2px;
+	left:250px;
+	margin:auto;
 }
 
 #eta{
 	position: absolute;
-	top: 10px;
-	left:10px;
-	width:800px;
-	height:400px;
-	border: 10px solid #333;
+	top: 25px;
+	left:78px;
+	width:160px;
+	height:80px;
+	border: 2px solid #333;
 	border-right:0px;
+	background:white;
+	overflow:hidden;
 }
 
 #eta_label{
-	font-size:50px;
+	font-size:12px;
 	text-align:center;
-	margin-top:30px;
-	margin-bottom:10px;
+	margin-top:6px;
+	margin-bottom:2px;
+	background:white;
 }
 
 #time{
 	position:absolute;
-	margin-top:20px;
-	left:110px;
-	font-size:200px;
-	text-align:left;	
+	margin-top:4px;
+	left:22px;
+	font-size:40px;
+	text-align:left;
 }
 
 #buttons{
 	position:absolute;
-	top:10px;
-	left:810px;
-	width:790px;
-	height:400px;
-	border: 10px solid #333;
+	top:25px;
+	left:238px;
+	width:168px;
+	height:80px;
+	border: 2px solid #333;
 	border-right:0px;
+	background:white;
+	overflow:hidden;
 }
 
 #button_holder{
 	position:absolute;
-	top:50px;
-	left:100px;
-	width:600px;
+	top:10px;
+	left:10px;
+	width:150px;
+	background:white;
 }
 
 .button{
-	margin:10px;
-	margin-bottom:100px;
+	margin:1px;
+	margin-bottom:10px;
 	color:black;
+	background:#CCC;
+	border:1px groove #BBB;
 	
 	border-radius: 50%; 
-	height: 90px;
-	width: 90px;
-	font-size: 43pt;
+	height: 22px;
+	width: 22px;
+	font-size: 7pt;
 }
 
 #list{
 	position:absolute;
-	top:10px;
-	left:1600px;
-	width:1400px;
-	height:400px;
-	border:10px solid #333;
-	font-size:300px;
+	top:25px;
+	left:406px;
+	width:280px;
+	height:80px;
+	border:2px solid #333;
+	font-size:60px;
 	text-align:center;
+	background:white;
+}
+
+#image img{
+	width:750px;
 }

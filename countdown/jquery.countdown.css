@@ -2,6 +2,7 @@
 .hasCountdown {
 	/*border: 1px solid #ccc;
 	background-color: #eee;*/
+	background:white;
 }
 .countdown_rtl {
 	direction: rtl;
@@ -44,6 +45,7 @@
 }
 .countdown_amount {
 	/*font-size: 200%;*/
+	background:white;
 }
 .countdown_descr {
 	display: block;
