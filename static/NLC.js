@@ -22,7 +22,7 @@ $(document).ready(function() {
 		if (parseInt(i) !== parseInt(current)) {
 			(function(x) {
 				$("#floor" + x).click(function() {
-					$("#floorDisp").text("");
+					//$("#floorDisp").text("");
 					var colorNum = Math.floor(Math.random()*4);
 					$("#floor" + x).css({"background-color": colors[colorNum]});
 					$("#floor" + x).unbind("click");

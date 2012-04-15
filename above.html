@@ -136,15 +136,23 @@ $(document).ready(function(){
 function stay(){
 	console.log("dir: "+direction);
 	console.log(filtered_floors);
+	console.log(floors);
 	
 	/* pass back floors not yet gone to yet */
 	var left_floors = new Array();
 	for(element in floors){
-		if(floors[element] in filtered_floors){
+		//console.log(element);
+		if (direction == "up" && parseInt(floors[element]) < parseInt(current)) {
+			left_floors.push(floors[element]);
+		} else if (direction == "down" && parseInt(floors[element]) > parseInt(current)) {
 			left_floors.push(floors[element]);
 		}
+		/* console.log(floors[element]);
+		if(!(floors[element] in filtered_floors)){
+			left_floors.push(floors[element]);
+		} */
 	}
-	
+	console.log(left_floors);
 	left_floors = left_floors.join('x');
 	
 	if(direction == "up"){
