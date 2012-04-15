@@ -82,8 +82,8 @@ $(document).ready(function() {
 				}
 			}
 			console.log(floors);
-			//post_to_url("./above.html", {'a': 'z'}, 'POST');
-			$.post('./above.html', {'a': 'z'});
+			post_to_url("./above.html", {'a': 'z'}, 'POST');
+			//$.post('./above.html', {'a': 'z'});
 			//color, floors, x is delimitors
 			//1200x1135
 				/* Green

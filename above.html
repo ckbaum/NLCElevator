@@ -9,13 +9,74 @@
 
 <script>
 $(document).ready(function(){
+
+	/* gets info from the url */
+	var color = "";
+	color = getUrlVars()["color"];
+	var floors = new Array();
+	
+	if(floors.length!=0){
+		floors = getUrlVars()["floors"].split('x');
+	}
 	
 	var random_num = Math.floor(Math.random()*50);
-	$('#time').countdown({until: +random_num, compact:true, format:'MS', description:''});	
+	if(color == undefined || floors.length == 0){
+		random_num = 0;
+	}else{
+		/* highlights the floor numbers in the appropriate color */
+		for(element in floors){
+			$(".button#"+floors[element]).css("background", color);
+		}
+		
+		for(var dummy=100; dummy >=0; dummy--){
+			$("#scrolltext").append(floors.join(', '));
+			$("#scrolltext").append(", ");
+		}
+	}
+	
+	$('#time').countdown({until: +random_num, compact:true, format:'MS', description:''});
 
 	window.setTimeout(function(){
 		$('#eta').after('<EMBED src="sounds/lobbychime.mp3" autoplay=true hidden=true volume=100 loop=false />');
 	}, random_num*1000);
+	
+	/* gets the variables in the url */
+	function getUrlVars(){
+		var vars = [], hash;
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for(var i = 0; i < hashes.length; i++){
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+	
+	/*$("#scrolltext1").text(floors.join(', '));
+	$("#scrolltext2").text(floors.join(', '));
+	
+	  var m=0;
+	  var n=280;
+	  var speed=10;
+	function scrollPics() {
+		 document.getElementById('scrolltext1').style.left=m+'px';
+		 document.getElementById('scrolltext2').style.left=n+'px';
+	   m--;
+	   n--;
+		if(m==-280) {
+		   m=280;
+		 }
+		if(n==-280) {
+		   n=280;
+		 }
+		 //setTimeout(scrollPics(),speed);
+	 } 
+	 
+	 //setTimeout(scrollPics(),speed);
+	
+	window.onload=function() {
+	   scrollPics();
+	 }*/
 	
 });
 
@@ -25,6 +86,7 @@ $(document).ready(function(){
 </head>
 
 <body>
+<div id="test"></div>
 <div id="wrapper">
 <div id="eta">
 	<p id="eta_label">Estimated Time to Arrival</p>
@@ -34,21 +96,23 @@ $(document).ready(function(){
 
 <div id="buttons">
 	<div id="button_holder">
-		<input type="button" class="button" value="6" disabled="disabled" />
-		<input type="button" class="button" value="7" disabled="disabled" />
-		<input type="button" class="button" value="8" disabled="disabled" />
-		<input type="button" class="button" value="9" disabled="disabled" />
-		<input type="button" class="button" value="10" disabled="disabled" />
-		<input type="button" class="button" value="1" disabled="disabled" />
-		<input type="button" class="button" value="2" disabled="disabled" />
-		<input type="button" class="button" value="3" disabled="disabled" />
-		<input type="button" class="button" value="4" disabled="disabled" />
-		<input type="button" class="button" value="5" disabled="disabled" />
+		<input type="button" class="button" id="6" value="6" disabled="disabled" />
+		<input type="button" class="button" id="7" value="7" disabled="disabled" />
+		<input type="button" class="button" id="8" value="8" disabled="disabled" />
+		<input type="button" class="button" id="9" value="9" disabled="disabled" />
+		<input type="button" class="button" id="10" value="10" disabled="disabled" />
+		<input type="button" class="button" id="1" value="1" disabled="disabled" />
+		<input type="button" class="button" id="2" value="2" disabled="disabled" />
+		<input type="button" class="button" id="3" value="3" disabled="disabled" />
+		<input type="button" class="button" id="4" value="4" disabled="disabled" />
+		<input type="button" class="button" id="5" value="5" disabled="disabled" />
 	</div>
 </div>
 
 <div id="list">
-	1, 2, 5, 8
+	<marquee id="scrolltext" behavior="scroll" direction="left" scrollamount="5"></marquee>
+	<!--<div id="scrolltext1"></div>	
+	<div id="scrolltext2"></div>-->
 </div>
 
 <div id="image">
