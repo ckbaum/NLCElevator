@@ -5,3 +5,5 @@
 	font-size: 45pt;
 	/* Red: #C00000, Yellow: #FFD700, Blue: #0276FD */
 }
+
+/* Image fit whole screen, in div, overflow hidden during interface, have image move with scroll, when iterface goes, set image to allow overflow */

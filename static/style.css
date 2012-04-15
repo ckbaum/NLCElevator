@@ -1,0 +1,95 @@
+.button {
+	border-radius: 50%; 
+	height: 80px;
+	width: 80px;
+	font-size: 45pt;
+	/* Red: #C00000, Yellow: #FFD700, Blue: #0276FD */
+}
+
+.buttonPad {
+	padding: 20px;
+	float: left;
+	/* background-color: white; */
+}
+
+.buttons {
+	width: 250px;
+	margin: auto;
+}
+
+.done {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	background-color: #C00000;
+	width: 175px;
+	height: 50px;
+	font-weight: bold;
+	color: white;
+}
+
+.line {
+	clear: both;
+}
+
+.map {
+	width: 250px; 
+	height: auto;
+	padding: 20px;
+}
+
+.lobby {
+	z-index: -1; 
+	position: absolute; 
+	top: 0px; 
+	left: 0px; 
+	width: 100%;
+}
+
+.lobby2 {
+	z-index: -2; 
+	position: absolute; 
+	top: 0px; 
+	left: 0px; 
+	width: 100%;
+}
+
+.test {
+	position: absolute;
+	background-color: black;
+	/* Green
+	width: 175px;
+	height: 675px; 
+	top: 300px;
+	left: 1085px; */
+	/* Blue
+	width: 125px;
+	height: 525px;
+	top: 350px;
+	left: 950px; */
+	/* Red
+	width: 125px;
+	height: 525px;
+	top: 350px;
+	left: 385px; */
+	/* Yellow
+	width: 175px;
+	height: 675px;
+	top: 300px;
+	left: 200px; */
+}
+
+.interface {
+	background-color: #87421F;
+	text-align: center;
+	width: 300px;
+	height: 1025px;
+	margin: auto;
+}
+
+body {
+	text-align: center;
+	/* float: center; */
+	/* clear: both; */
+	/* background-image: url('../lobby-blurred.jpg'); */
+}
