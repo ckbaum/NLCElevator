@@ -38,7 +38,9 @@ $(document).ready(function() {
 		console.log(window.innerWidth);
 		console.log(window.innerHeight);
 		$("#interface").css({"pointer-events": "none"});
-		$("#interface").hide();
+		//setTimeout('$("#interface").hide()', 5000);
+		setTimeout('$("#interface").animate({opacity: 0.01}, 3000)', 1000);
+		setTimeout('$("#interface").hide()', 4000);
 		$("#lobby").click(function(e) {
 			//console.log(e);
 			var mult = window.innerWidth/1366;
