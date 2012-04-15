@@ -15,15 +15,15 @@ $(document).ready(function(){
 	color = getUrlVars()["color"];
 	var floors = new Array();
 	
-	if(floors.length!=0){
-		floors = getUrlVars()["floors"].split('x');
-	}
+	floors = getUrlVars()["floors"]
 	
 	var random_num = Math.floor(Math.random()*50);
+
 	if(color == undefined || floors.length == 0){
 		random_num = 0;
 	}else{
 		/* highlights the floor numbers in the appropriate color */
+		floors = floors.split('x');
 		for(element in floors){
 			$(".button#"+floors[element]).css("background", color);
 		}
