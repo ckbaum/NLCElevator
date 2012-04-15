@@ -89,9 +89,10 @@ $(document).ready(function() {
 		//setTimeout('$("#interface").hide()', 5000);
 		setTimeout('$("#interface").animate({opacity: 0.01}, 3000)', 1000);
 		setTimeout('$("#interface").hide(); $("#done").hide();', 4000);
-		setTimeout('$("#return").show();', 4500)
+		setTimeout('$("#return").show(); $("#select").show();', 4500)
 		$("#return").click(function() {
 			$("#return").hide();
+			$("#select").hide();
 			$("#interface").show();
 			$("#interface").css({"opacity": 1})
 			$("#done").show();
@@ -101,7 +102,9 @@ $(document).ready(function() {
 			//console.log($(window).scrollTop());
 			//$("#lobby").css({"top": $(window).scrollTop()});
 			$("#return").css({"top": $(window).scrollTop() + 25});
+			$("#select").css({"top": $(window).scrollTop() + 50});
 		});
+		//setTimeout('alert("Click an elevator to walk over");', 5000);
 		//$("#return").show();
 		$("#lobby").click(function(e) {
 			//console.log(e);
