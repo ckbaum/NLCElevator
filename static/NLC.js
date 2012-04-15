@@ -103,7 +103,11 @@ $(document).ready(function() {
 					highlight = highlight + floors[i];
 				}
 			}
-			newURL = newURL + "&floors=" + highlight;
+			var current = getUrlVars()["current"];
+			if (current == undefined) {
+				current = 1;
+			}
+			newURL = newURL + "&floors=" + highlight + "&current=" + current;
 			window.location = newURL;
 			//+ "?color=" + floors[0]
 			//$.post('./above.html', {'a': 'z'});
@@ -158,4 +162,16 @@ function post_to_url(path, params, method) {
 
     document.body.appendChild(form);
     form.submit();
+}
+
+/* gets the variables in the url */
+function getUrlVars(){
+	var vars = [], hash;
+	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+	for(var i = 0; i < hashes.length; i++){
+		hash = hashes[i].split('=');
+		vars.push(hash[0]);
+		vars[hash[0]] = hash[1];
+	}
+	return vars;
 }
