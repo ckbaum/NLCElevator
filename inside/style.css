@@ -1,0 +1,14 @@
+#floorlist{
+    width:500px;
+    background-color:black;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.floor{
+    width:500px;
+    color:yellow;
+    font-size:30pt;
+    font-family:Verdana;
+    padding:10px;
+}
