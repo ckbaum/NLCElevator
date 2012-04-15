@@ -41,6 +41,43 @@ $(document).ready(function() {
 			})(i);
 		}
 	}
+	var floorData = getUrlVars()["data"];
+	if (floorData != undefined) {
+		for (var k = 0; k < floorData.length; k++) {
+			//console.log(k);
+			//k += 1;
+			var f = floorData[k];
+			k += 1;
+			if (floorData[k] === "0") {
+				f = f + "0"
+				k += 1;
+			}
+			var colorNum;
+			if (floorData[k] === "R") {
+				colorNum = 0;
+			} else if (floorData[k] === "Y") {
+				colorNum = 1;
+			} else if (floorData[k] === "B") {
+				colorNum = 2;
+			} else if (floorData[k] === "G") {
+				colorNum = 3;
+			}
+			$("#floor" + f).css({"background-color": colors[colorNum]});
+			$("#floor" + f).unbind("click");
+			click[f] = colors[colorNum];
+			colorUsed[colorNum] = true;
+			var img = "";
+			for (var p = 0; p < 4; p++) {
+				if (colorUsed[p] == true) {
+					img = img + translation[p];
+				}
+			}
+			if (img.length == 0) {
+				img = "Standard";
+			}
+			$("#map").attr({"src": "img/" + img + ".png"});
+		}
+	}
 	$("#done").click(function() {
 		//$(window).animate({ scrollTop: 0 }, "slow");
 		$('body').animate({scrollTop:0}, 'slow');
@@ -58,6 +95,12 @@ $(document).ready(function() {
 			$("#interface").show();
 			$("#interface").css({"opacity": 1})
 			$("#done").show();
+		});
+		$(window).scroll(function() {
+			//console.log(e);
+			//console.log($(window).scrollTop());
+			//$("#lobby").css({"top": $(window).scrollTop()});
+			$("#return").css({"top": $(window).scrollTop() + 25});
 		});
 		//$("#return").show();
 		$("#lobby").click(function(e) {
@@ -102,6 +145,20 @@ $(document).ready(function() {
 					}
 				}
 			}
+			var data = "";
+			for (var j in click) {
+				data = data + j;
+				if (click[j] === "#C00000") {
+					data = data + "R";
+				} else if (click[j] === "#FFD700") {
+					data = data + "Y";
+				} else if (click[j] === "#1DA237") {
+					data = data + "G";
+				} else if (click[j] === "#0276FD") {
+					data = data + "B";
+				}
+			}
+			console.log(data);
 			console.log(floors);
 			//post_to_url("./above.html", {'color': floors[0]}, 'POST');
 			/* var http = new XMLHttpRequest();
@@ -125,7 +182,7 @@ $(document).ready(function() {
 						highlight = highlight + floors[i];
 					}
 				}
-				newURL = newURL + "&floors=" + highlight + "&current=" + current;
+				newURL = newURL + "&floors=" + highlight + "&current=" + current + "&data=" + data;
 				window.location = newURL;
 			}
 			//+ "?color=" + floors[0]

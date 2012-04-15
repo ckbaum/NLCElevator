@@ -152,3 +152,14 @@ marquee{
 	font-size:15px;
 	background:#CCC;
 }
+
+.return {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	height: 50px;
+	width: 175px;
+	background-color: #C00000;
+	font-weight: bold;
+	color: white;
+}

@@ -130,6 +130,12 @@ $(document).ready(function(){
 		return vars;
 	}
 	
+	$("#return").click(function() {
+		returnFloors = getUrlVars()["data"];
+		window.location = "./index2.html?current="+current+"&data=" + returnFloors;
+		//need to know floors/colors+current floor	
+	});
+	
 });
 
 /* function called when user wants to stay on floor */
@@ -176,6 +182,7 @@ function goConnor(){
 </head>
 
 <body>
+<div><button class=return id=return>Return to Floor Select</button></div>
 <div id="test"></div>
 <div id="wrapper">
 <div id="arrow"></div>
@@ -208,6 +215,7 @@ function goConnor(){
 <div id="image">
 	<img src="images/above.jpg"/>
 </div>
+
 
 <div class="confirmboxone">
 	Would you like to enter the elevator?<br /><br />
