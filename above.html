@@ -8,14 +8,19 @@
 <script type="text/javascript" src="countdown/jquery.countdown.js"></script>
 
 <script>
+var color = "";
+var floors = new Array();
+var filtered_floors = new Array();
+var current = "";
+var direction = "";
+
 $(document).ready(function(){
 
 	/* gets info from the url */
-	var color = "";
-	color = getUrlVars()["color"];
-	var floors = new Array();
-	
-	floors = getUrlVars()["floors"]
+	color = getUrlVars()["color"]; // gets color of elevator
+	floors = getUrlVars()["floors"]; // gets list of floors
+	current = getUrlVars()["current"]; // gets current floor
+	direction = getUrlVars()["direction"]; // gets direction if it exists
 	
 	var random_num = Math.floor(Math.random()*50);
 
@@ -24,12 +29,75 @@ $(document).ready(function(){
 	}else{
 		/* highlights the floor numbers in the appropriate color */
 		floors = floors.split('x');
+	
+		/* figure out if you're going up or down */
+		var up = 0;
+		var down = 0;
+		
+		if(direction != "up" && direction != "down"){
+			for(element in floors){
+				if(floors[element] > current){
+					up += 1;
+				}else{
+					down += 1;
+				}
+			}
+		}
+	
+		/* filters to figure out whether it's going up or down */
 		for(element in floors){
-			$(".button#"+floors[element]).css("background", color);
+			if(direction != "up" && direction != "down"){
+				if(up >= down){ // going up
+					if(floors[element] > current){
+						$(".button#"+floors[element]).css("background", color);
+						filtered_floors.push(floors[element]);
+					}
+				}
+				if(down > up){ // going down
+					if(floors[element] < current){
+						$(".button#"+floors[element]).css("background", color);
+						filtered_floors.push(floors[element]);
+					}
+				}
+			}else{
+				if(direction == "up"){ // going up
+					if(floors[element] > current){
+						$(".button#"+floors[element]).css("background", color);
+						filtered_floors.push(floors[element]);
+					}
+				}
+				if(direction == "down"){ // going down
+					if(floors[element] < current){
+						$(".button#"+floors[element]).css("background", color);
+						filtered_floors.push(floors[element]);
+					}
+				}
+			}
+		}
+		
+		/* deal with arrow direction */
+		if(direction != "up" && direction != "down"){
+			if(up >= down){
+				direction = "up";
+				$("#arrow").append('<img src="img/UpArrow.png" width=100% />');
+			}
+			if(down > up){
+				direction = "down";
+				$("#arrow").append('<img src="img/DownArrow.png" width=100% />');
+			}
+		}else{
+			if(direction == "up"){
+				direction = "up";
+				$("#arrow").append('<img src="img/UpArrow.png" width=100% />');
+			}
+			if(direction == "down"){
+				direction = "down";
+				$("#arrow").append('<img src="img/DownArrow.png" width=100% />');
+			}
 		}
 		
 		for(var dummy=100; dummy >=0; dummy--){
-			$("#scrolltext").append(floors.join(', '));
+			$("#scrolltext").append(filtered_floors.join(', '));
 			$("#scrolltext").append(", ");
 		}
 	}
@@ -38,6 +106,16 @@ $(document).ready(function(){
 
 	window.setTimeout(function(){
 		$('#eta').after('<EMBED src="sounds/lobbychime.mp3" autoplay=true hidden=true volume=100 loop=false />');
+		
+		console.log(floors);
+		
+		if(floors.length == 0){
+			console.log("here");
+			$('.confirmboxtwo').css("z-index", "1"); // no more floors
+		}else{
+			console.log("i was here");
+			$('.confirmboxone').css("z-index", "1"); // more floors
+		}
 	}, random_num*1000);
 	
 	/* gets the variables in the url */
@@ -52,33 +130,37 @@ $(document).ready(function(){
 		return vars;
 	}
 	
-	/*$("#scrolltext1").text(floors.join(', '));
-	$("#scrolltext2").text(floors.join(', '));
-	
-	  var m=0;
-	  var n=280;
-	  var speed=10;
-	function scrollPics() {
-		 document.getElementById('scrolltext1').style.left=m+'px';
-		 document.getElementById('scrolltext2').style.left=n+'px';
-	   m--;
-	   n--;
-		if(m==-280) {
-		   m=280;
-		 }
-		if(n==-280) {
-		   n=280;
-		 }
-		 //setTimeout(scrollPics(),speed);
-	 } 
-	 
-	 //setTimeout(scrollPics(),speed);
-	
-	window.onload=function() {
-	   scrollPics();
-	 }*/
-	
 });
+
+/* function called when user wants to stay on floor */
+function stay(){
+	console.log("dir: "+direction);
+	console.log(filtered_floors);
+	
+	/* pass back floors not yet gone to yet */
+	var left_floors = new Array();
+	for(element in floors){
+		if(floors[element] in filtered_floors){
+			left_floors.push(floors[element]);
+		}
+	}
+	
+	left_floors = left_floors.join('x');
+	
+	if(direction == "up"){
+		direction = "down";
+	}else{
+		direction = "up";
+	}
+	
+	window.location = "./above.html?direction="+direction+"&color="+color+"&floors="+left_floors+"&current="+current;
+}
+
+/* function called when user wants to go into elevator */
+/* passing to Connor happens here */
+function goConnor(){
+	alert("go to connor");
+}
 
 </script>
 
@@ -88,6 +170,8 @@ $(document).ready(function(){
 <body>
 <div id="test"></div>
 <div id="wrapper">
+<div id="arrow"></div>
+
 <div id="eta">
 	<p id="eta_label">Estimated Time to Arrival</p>
 	<p id="time"></p>
@@ -111,13 +195,23 @@ $(document).ready(function(){
 
 <div id="list">
 	<marquee id="scrolltext" behavior="scroll" direction="left" scrollamount="5"></marquee>
-	<!--<div id="scrolltext1"></div>	
-	<div id="scrolltext2"></div>-->
 </div>
 
 <div id="image">
 	<img src="images/above.jpg"/>
 </div>
+
+<div class="confirmboxone">
+	Would you like to enter the elevator?<br /><br />
+	<button onclick="goConnor()">Get in Elevator</button>
+	<button onclick="stay()">Stay</button>
+</div>
+
+<div class="confirmboxtwo">
+	Would you like to enter the elevator?<br /><br />
+	<button onclick="goConnor()">Get in Elevator</button>
+</div>
+
 </div> <!-- end wrapper div -->
 
 </body>
