@@ -82,6 +82,9 @@ $(document).ready(function() {
 				}
 			}
 			console.log(floors);
+<<<<<<< HEAD
+			post_to_url("./above.html", {'a': 'z'}, 'POST');
+=======
 			//post_to_url("./above.html", {'color': floors[0]}, 'POST');
 			/* var http = new XMLHttpRequest();
 			var params = "color=" + floors[0];
@@ -106,6 +109,7 @@ $(document).ready(function() {
 			newURL = newURL + "&floors=" + highlight;
 			window.location = newURL;
 			//+ "?color=" + floors[0]
+>>>>>>> b9560ea278992c75a97b5e6e76f6ed9cfa868849
 			//$.post('./above.html', {'a': 'z'});
 			//color, floors, x is delimitors
 			//1200x1135
