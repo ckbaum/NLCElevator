@@ -1,11 +1,45 @@
 <html>
 <head>
 <title>Above Elevator</title>
+<link href="global.css" rel="stylesheet" type="text/css">
+<link href="style-above.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<style type="text/css">@import "countdown/jquery.countdown.css";</style>
+<script type="text/javascript" src="countdown/jquery.countdown.js"></script>
+
+<script>
+$(document).ready(function(){
+	$('#time').countdown({until: +20, compact:true, format:'MS', description:''});
+});
+</script>
+
 </head>
 
 <body>
-<div id="eta"><div>
-<div id="buttons"></div>
-<div id="list"></div>
+<div id="eta">
+	<p id="eta_label">Estimated Time to Arrival</p>
+	<p id="time"></p>
+</div>
+
+<div id="buttons">
+	<div id="button_holder">
+		<input type="button" class="button" value="6" />
+		<input type="button" class="button" value="7" />
+		<input type="button" class="button" value="8" />
+		<input type="button" class="button" value="9" />
+		<input type="button" class="button" value="10" />
+		<input type="button" class="button" value="1" />
+		<input type="button" class="button" value="2" />
+		<input type="button" class="button" value="3" />
+		<input type="button" class="button" value="4" />
+		<input type="button" class="button" value="5" />
+	</div>
+</div>
+
+<div id="list">
+	1, 2, 5, 8
+</div>
+
 </body>
 </html>
