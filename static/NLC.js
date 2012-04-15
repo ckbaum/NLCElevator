@@ -94,7 +94,7 @@ $(document).ready(function() {
 				  alert('Load was performed.');
 			}); */
 			//window.location = "./above.html?color=green";
-			var newURL = "./above.html?color" + floors[0];
+			var newURL = "./above.html?color=" + floors[0];
 			var highlight = "";
 			if (floors.length > 1) {
 				highlight = highlight + floors[1];
