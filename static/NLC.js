@@ -82,8 +82,31 @@ $(document).ready(function() {
 				}
 			}
 			console.log(floors);
-			//post_to_url("./above.html", {'a': 'z'}, 'POST');
-			$.post('./above.html', {'a': 'z'});
+			//post_to_url("./above.html", {'color': floors[0]}, 'POST');
+			/* var http = new XMLHttpRequest();
+			var params = "color=" + floors[0];
+			http.open("POST", './above.html', true);
+			http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			http.setRequestHeader("Content-length", params.length);
+			http.setRequestHeader("Connection", "close");
+			http.send(params); */
+			/* $('#interface').load('above.html?color=green', function() {
+				  alert('Load was performed.');
+			}); */
+			//window.location = "./above.html?color=green";
+			var newURL = "./above.html?color" + floors[0];
+			var highlight = "";
+			if (floors.length > 1) {
+				highlight = highlight + floors[1];
+				for (var i = 2; i < floors.length; i++) {
+					highlight = highlight + "x";
+					highlight = highlight + floors[i];
+				}
+			}
+			newURL = newURL + "&floors=" + highlight;
+			window.location = newURL;
+			//+ "?color=" + floors[0]
+			//$.post('./above.html', {'a': 'z'});
 			//color, floors, x is delimitors
 			//1200x1135
 				/* Green
