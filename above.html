@@ -1,6 +1,5 @@
 <html>
 <head>
-<title>Above Elevator</title>
 <link href="global.css" rel="stylesheet" type="text/css">
 <link href="style-above.css" rel="stylesheet" type="text/css">
 
@@ -10,30 +9,40 @@
 
 <script>
 $(document).ready(function(){
-	$('#time').countdown({until: +20, compact:true, format:'MS', description:''});
+	
+	var random_num = Math.floor(Math.random()*50);
+	$('#time').countdown({until: +random_num, compact:true, format:'MS', description:''});	
+
+	window.setTimeout(function(){
+		$('#eta').after('<EMBED src="sounds/lobbychime.mp3" autoplay=true hidden=true volume=100 loop=false />');
+	}, (random_num)*1000-500);
+	
 });
+
 </script>
 
+<title>Above Elevator</title>
 </head>
 
 <body>
 <div id="eta">
 	<p id="eta_label">Estimated Time to Arrival</p>
 	<p id="time"></p>
+	<sound src="sounds/lobbychime.wav" delay=2></sound>
 </div>
 
 <div id="buttons">
 	<div id="button_holder">
-		<input type="button" class="button" value="6" />
-		<input type="button" class="button" value="7" />
-		<input type="button" class="button" value="8" />
-		<input type="button" class="button" value="9" />
-		<input type="button" class="button" value="10" />
-		<input type="button" class="button" value="1" />
-		<input type="button" class="button" value="2" />
-		<input type="button" class="button" value="3" />
-		<input type="button" class="button" value="4" />
-		<input type="button" class="button" value="5" />
+		<input type="button" class="button" value="6" disabled="disabled" />
+		<input type="button" class="button" value="7" disabled="disabled" />
+		<input type="button" class="button" value="8" disabled="disabled" />
+		<input type="button" class="button" value="9" disabled="disabled" />
+		<input type="button" class="button" value="10" disabled="disabled" />
+		<input type="button" class="button" value="1" disabled="disabled" />
+		<input type="button" class="button" value="2" disabled="disabled" />
+		<input type="button" class="button" value="3" disabled="disabled" />
+		<input type="button" class="button" value="4" disabled="disabled" />
+		<input type="button" class="button" value="5" disabled="disabled" />
 	</div>
 </div>
 
