@@ -121,9 +121,9 @@ marquee{
 
 .confirmboxone{
 	position:absolute;
-	z-index:-1;
-	top:150px;
-	left:250px;
+	z-index:0;
+	top:225px;
+	left:195px;
 	width:300px;
 	border: 10px solid #933;
 	background:white;
@@ -132,23 +132,6 @@ marquee{
 }
 
 .confirmboxone button{
-	font-size:15px;
-	background:#CCC;
-}
-
-.confirmboxtwo{
-	position:absolute;
-	z-index:-1;
-	top:150px;
-	left:250px;
-	width:300px;
-	border: 10px solid #933;
-	background:white;
-	padding: 10px;
-	text-align:center;
-}
-
-.confirmboxtwo button{
 	font-size:15px;
 	background:#CCC;
 }
