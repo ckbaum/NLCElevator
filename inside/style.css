@@ -1,3 +1,17 @@
+body{
+    background-color:#222222;
+}
+#wrapper{
+    width:750px;
+    height:500px;
+    background-image:url("images/inside.png");
+    margin-left:auto;
+    margin-right:auto;
+    padding-top:100px;
+    border-style:solid;
+    border-color:#555555;
+}
+
 #floorlist{
     width:500px;
     background-color:black;
@@ -21,13 +35,13 @@
     position:absolute;
     left:50%;
     margin-left:-150px;
-    top:100px;
+    top:200px;
     background-color:white;
     padding:10px;
     text-align:center;
-    -moz-box-shadow:    0px 0px 3px 3px #222;
-    -webkit-box-shadow: 0px 0px 3px 3px #222;
-    box-shadow:         0px 0px 3px 3px #222;
+    -moz-box-shadow:    0px 0px 1px 1px #222;
+    -webkit-box-shadow: 0px 0px 3px 1px #222;
+    box-shadow:         0px 0px 3px 1px #222;
     background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc)); /* for webkit browsers */
     background: -moz-linear-gradient(top,  #ccc,  #000); /* for firefox 3.6+ */ 
     
