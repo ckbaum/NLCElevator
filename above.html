@@ -96,11 +96,15 @@ $(document).ready(function(){
 				$("#arrow").append('<img src="img/DownArrow.png" width=100% />');
 			}
 		}
-		
-		for(var dummy=100; dummy >=0; dummy--){
-			$("#scrolltext").append(filtered_floors.join(', '));
-			$("#scrolltext").append(", ");
-		}
+	    if(filtered_floors.length<4){
+            $("#list").html(filtered_floors.join(', '));
+        }
+        else{
+            for(var dummy=100; dummy >=0; dummy--){
+                $("#scrolltext").append(filtered_floors.join(', '));
+                $("#scrolltext").append(", ");
+            }
+        }
 	}
 	
 	$('#time').countdown({until: +random_num, compact:true, format:'MS', description:''});
