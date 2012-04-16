@@ -173,7 +173,10 @@ function stay(){
 /* function called when user wants to go into elevator */
 /* passing to Connor happens here */
 function goConnor(){
-	alert("go to connor");
+	//console.log(floors);
+	floors = floors.join('x');
+	window.location = "./inside/index.html?direction="+direction+"&floors=" + floors;
+	//alert("go to connor");
 }
 
 </script>
