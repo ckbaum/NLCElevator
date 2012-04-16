@@ -1,6 +1,6 @@
 var floors=[];
 var target=8;
-var seconds=Math.round(Math.random()*10)+2;
+var seconds=Math.round(Math.random()*5)+4;
 var curfloor=undefined;
 var curnum;
 var curind=0;
@@ -24,11 +24,11 @@ $(function() {
 });
 
 countdown=function(){
-    curfloor.html(curnum+": arriving in 00:"+seconds.toString());
+    curfloor.html(curnum+": arriving in 00:0"+seconds.toString());
     seconds-=1;
     if(seconds<=-1){
         curfloor.html("");
-        seconds=Math.round(Math.random()*15)+5;
+        seconds=Math.round(Math.random()*5)+4;
         curind+=1;
         curfloor=floors[curind];
         curnum=curfloor.html();
