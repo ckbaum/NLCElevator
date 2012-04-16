@@ -27,10 +27,24 @@ countdown=function(){
     curfloor.html(curnum+": arriving in 00:0"+seconds.toString());
     seconds-=1;
     if(seconds<=-1){
+        if(parseInt(curnum)==target){
+            show_confirm();
+        }
         curfloor.html("");
         seconds=Math.round(Math.random()*5)+4;
         curind+=1;
         curfloor=floors[curind];
         curnum=curfloor.html();
+    }
+}
+
+
+function show_confirm(){
+    var r=confirm("We've arrived at your floor");
+    if (r==true){
+        location.href="complete";
+    }
+    else{
+        alert("You pressed Cancel!");
     }
 }
