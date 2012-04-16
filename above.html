@@ -112,12 +112,8 @@ $(document).ready(function(){
 			
 			console.log(floors);
 			
-			if(floors.length == 0){
-				console.log("here");
-				$('.confirmboxtwo').css("z-index", "1"); // no more floors
-			}else{
-				console.log("i was here");
-				$('.confirmboxone').css("z-index", "1"); // more floors
+			if(floors.length != 0){
+				$('.confirmboxone').show();
 			}
 		}
 	}, random_num*1000);
@@ -146,22 +142,16 @@ $(document).ready(function(){
 function stay(){
 	
 	$("#elevatordoor").animate({opacity:1.0}, 1000);
-
-	console.log("dir: "+direction);
-	console.log(filtered_floors);
-	console.log(floors);
 	
 	/* pass back floors not yet gone to yet */
 	var left_floors = new Array();
 	for(element in floors){
-		//console.log(element);
 		if (direction == "up" && parseInt(floors[element]) < parseInt(current)) {
 			left_floors.push(floors[element]);
 		} else if (direction == "down" && parseInt(floors[element]) > parseInt(current)) {
 			left_floors.push(floors[element]);
 		}
 	}
-	console.log(left_floors);
 	left_floors = left_floors.join('x');
 	
 	if(direction == "up"){
@@ -174,7 +164,6 @@ function stay(){
 }
 
 /* function called when user wants to go into elevator */
-/* passing to Connor happens here */
 function goConnor(){
 	floors = filtered_floors.join('x');
 	window.location = "./inside/index.html?direction="+direction+"&floors=" + floors;
@@ -182,7 +171,7 @@ function goConnor(){
 
 </script>
 
-<title>Above Elevator</title>
+<title>NLC Elevator</title>
 </head>
 
 <body>
