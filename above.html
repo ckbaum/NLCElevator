@@ -160,10 +160,6 @@ function stay(){
 		} else if (direction == "down" && parseInt(floors[element]) > parseInt(current)) {
 			left_floors.push(floors[element]);
 		}
-		/* console.log(floors[element]);
-		if(!(floors[element] in filtered_floors)){
-			left_floors.push(floors[element]);
-		} */
 	}
 	console.log(left_floors);
 	left_floors = left_floors.join('x');
@@ -180,10 +176,8 @@ function stay(){
 /* function called when user wants to go into elevator */
 /* passing to Connor happens here */
 function goConnor(){
-	//console.log(floors);
 	floors = filtered_floors.join('x');
 	window.location = "./inside/index.html?direction="+direction+"&floors=" + floors;
-	//alert("go to connor");
 }
 
 </script>
