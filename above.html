@@ -105,16 +105,20 @@ $(document).ready(function(){
 	$('#time').countdown({until: +random_num, compact:true, format:'MS', description:''});
 
 	window.setTimeout(function(){
-		$('#eta').after('<EMBED src="sounds/lobbychime.mp3" autoplay=true hidden=true volume=100 loop=false />');
-		
-		console.log(floors);
-		
-		if(floors.length == 0){
-			console.log("here");
-			$('.confirmboxtwo').css("z-index", "1"); // no more floors
-		}else{
-			console.log("i was here");
-			$('.confirmboxone').css("z-index", "1"); // more floors
+		if(floors.length != 0){
+			$('#eta').after('<EMBED src="sounds/lobbychime.mp3" autoplay=true hidden=true volume=100 loop=false />');
+			
+			$("#elevatordoor").animate({opacity:0.01}, 1000);
+			
+			console.log(floors);
+			
+			if(floors.length == 0){
+				console.log("here");
+				$('.confirmboxtwo').css("z-index", "1"); // no more floors
+			}else{
+				console.log("i was here");
+				$('.confirmboxone').css("z-index", "1"); // more floors
+			}
 		}
 	}, random_num*1000);
 	
@@ -140,6 +144,9 @@ $(document).ready(function(){
 
 /* function called when user wants to stay on floor */
 function stay(){
+	
+	$("#elevatordoor").animate({opacity:1.0}, 1000);
+
 	console.log("dir: "+direction);
 	console.log(filtered_floors);
 	console.log(floors);
@@ -216,7 +223,8 @@ function goConnor(){
 </div>
 
 <div id="image">
-	<img src="images/above-closed.jpg"/>
+	<img src="images/above-opened.jpg"/>
+	<img id="elevatordoor" src="images/above-closed.jpg"/>
 </div>
 
 <div class=floorNumber><font class=floorDisp id=floorDisp></font></div>

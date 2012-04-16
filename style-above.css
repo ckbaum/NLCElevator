@@ -1,6 +1,6 @@
 *{
 	font-family:Futura, sans-serif;
-	background:#888;
+	/*background:#333;*/
 }
 
 #wrapper{
@@ -116,12 +116,14 @@ marquee{
 }
 
 #image img{
+	position:absolute;
 	width:750px;
+	z-index:-1;
 }
 
 .confirmboxone{
 	position:absolute;
-	z-index:0;
+	z-index:-2;
 	top:225px;
 	left:195px;
 	width:300px;
