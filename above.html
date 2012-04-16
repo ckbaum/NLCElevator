@@ -29,6 +29,7 @@ $(document).ready(function(){
 	}else{
 		/* highlights the floor numbers in the appropriate color */
 		floors = floors.split('x');
+		
 	
 		/* figure out if you're going up or down */
 		var up = 0;
@@ -109,8 +110,6 @@ $(document).ready(function(){
 			$('#eta').after('<EMBED src="sounds/lobbychime.mp3" autoplay=true hidden=true volume=100 loop=false />');
 			
 			$("#elevatordoor").animate({opacity:0.01}, 1000);
-			
-			console.log(floors);
 			
 			if(floors.length != 0){
 				$('.confirmboxone').show();
