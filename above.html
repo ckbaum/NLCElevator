@@ -48,26 +48,26 @@ $(document).ready(function(){
 		for(element in floors){
 			if(direction != "up" && direction != "down"){
 				if(up >= down){ // going up
-					if(floors[element] > current){
+					if(parseInt(floors[element]) > parseInt(current)) {
 						$(".button#"+floors[element]).css("background", color);
 						filtered_floors.push(floors[element]);
 					}
 				}
 				if(down > up){ // going down
-					if(floors[element] < current){
+					if(parseInt(floors[element]) < parseInt(current)) {
 						$(".button#"+floors[element]).css("background", color);
 						filtered_floors.push(floors[element]);
 					}
 				}
 			}else{
 				if(direction == "up"){ // going up
-					if(floors[element] > current){
+					if(parseInt(floors[element]) > parseInt(current)) {
 						$(".button#"+floors[element]).css("background", color);
 						filtered_floors.push(floors[element]);
 					}
 				}
 				if(direction == "down"){ // going down
-					if(floors[element] < current){
+					if(parseInt(floors[element]) < parseInt(current)) {
 						$(".button#"+floors[element]).css("background", color);
 						filtered_floors.push(floors[element]);
 					}
