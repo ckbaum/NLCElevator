@@ -3,13 +3,11 @@
 	height: 80px;
 	width: 80px;
 	font-size: 45pt;
-	/* Red: #C00000, Yellow: #FFD700, Blue: #0276FD */
 }
 
 .buttonPad {
 	padding: 20px;
 	float: left;
-	/* background-color: white; */
 }
 
 .buttons {
@@ -73,7 +71,6 @@
 
 .test2 {
 	position: absolute;
-	/* background-color: red; */
 	width: 150px;
 	height: 150px;
 	top: 125px;
@@ -86,17 +83,9 @@
 }
 
 .instr {
-	/* position: relative;
-	top: 50px;
-	/* margin: auto;
-	display: None; */
-	/* left: 0px; */
 	position: relative;
 	font-weight: bold;
 	color: #D6D6D6;
-	/* background-color: black;
-	height: 40px;
-	width: 215px; */
 	top: 10px;
 }
 
@@ -115,26 +104,6 @@
 .test {
 	position: absolute;
 	background-color: black;
-	/* Green
-	width: 175px;
-	height: 675px; 
-	top: 300px;
-	left: 1085px; */
-	/* Blue
-	width: 125px;
-	height: 525px;
-	top: 350px;
-	left: 950px; */
-	/* Red
-	width: 125px;
-	height: 525px;
-	top: 350px;
-	left: 385px; */
-	/* Yellow
-	width: 175px;
-	height: 675px;
-	top: 300px;
-	left: 200px; */
 }
 
 .interface {
@@ -147,7 +116,4 @@
 
 body {
 	text-align: center;
-	/* float: center; */
-	/* clear: both; */
-	/* background-image: url('../lobby-blurred.jpg'); */
 }
