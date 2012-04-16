@@ -4,8 +4,12 @@ var seconds=Math.round(Math.random()*5)+4;
 var curfloor=undefined;
 var curnum;
 var curind=0;
+var down;
 
 $(function() {
+
+    $("#dialog").css("visibility", "hidden");
+    down=getUrlVars()["direction"]==="down";
 	var floors2 = getUrlVars()['floors'].split('x');
     for(var i=0; i < floors2.length; i++){
         var floor=$("<div></div>");
@@ -19,35 +23,55 @@ $(function() {
         floors.push(floor);
         $("#floorlist").prepend(floor);
     }
-    curfloor=floors[0];
-    curnum=floors[0].html();
+    if(down){
+        curind=floors.length-1;
+    }
+    curfloor=floors[curind];
+    curnum=floors[curind].html();
     setInterval("countdown()", 1000);
     countdown();
+    $("#getoff").click(function(){
+        location.href=("../index.html?current="+curnum.toString());
+    });
+    $("#stay").click(function(){
+        resume_elevator();
+    });
 });
 
 countdown=function(){
+    if(seconds>0){
+        seconds-=1;
+    }
     curfloor.html(curnum+": arriving in 00:0"+seconds.toString());
-    seconds-=1;
-    if(seconds<=-1){
-        if(parseInt(curnum)==target){
-            show_confirm();
-        }
-        curfloor.html("");
-        seconds=Math.round(Math.random()*5)+4;
-        curind+=1;
-        curfloor=floors[curind];
-        curnum=curfloor.html();
+    if(seconds==0){
+        show_confirm(parseInt(curnum));
     }
 }
 
+function resume_elevator(){
+    $("#dialog").css("visibility", "hidden");
+    curfloor.html("");
+    seconds=Math.round(Math.random()*5)+4;
+    if(down){
+        curfloor.remove();
+    }
+    curind+=!down*2-1;
+    curfloor=floors[curind];
+    curnum=curfloor.html();
+}
 
-function show_confirm(){
-    var r=confirm("We've arrived at your floor");
+function show_confirm(n){
+   /* var r=confirm("The doors open to floor "+n.toString());
     if (r==true){
         location.href="complete";
     }
     else{
         alert("You pressed Cancel!");
+    }*/
+    $("#dialog p").html("The elevator opens on floor "+n.toString());
+    $("#dialog").css("visibility", "visible");
+    if((down&&curind==0) || (!down && curind==floors.length-1)){
+        $("#stay").attr("disabled", "disabled");
     }
 }
 
