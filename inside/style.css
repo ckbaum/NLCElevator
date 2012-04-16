@@ -3,6 +3,8 @@
     background-color:black;
     margin-left:auto;
     margin-right:auto;
+    min-height:400px;
+    background-image:url("images/reflect.png");
 }
 
 .floor{
@@ -12,4 +14,22 @@
     font-family:Verdana;
     padding:10px;
     height:40px;
+}
+
+#dialog{
+    width:300px;
+    position:absolute;
+    left:50%;
+    margin-left:-150px;
+    top:100px;
+    background-color:white;
+    padding:10px;
+    text-align:center;
+    -moz-box-shadow:    0px 0px 3px 3px #222;
+    -webkit-box-shadow: 0px 0px 3px 3px #222;
+    box-shadow:         0px 0px 3px 3px #222;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #ccc,  #000); /* for firefox 3.6+ */ 
+    
+    
 }
