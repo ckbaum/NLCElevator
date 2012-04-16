@@ -22,7 +22,7 @@ $(document).ready(function() {
 		if (parseInt(i) !== parseInt(current)) {
 			(function(x) {
 				$("#floor" + x).click(function() {
-					$("#floorDisp").text("");
+					//$("#floorDisp").text("");
 					var colorNum = Math.floor(Math.random()*4);
 					$("#floor" + x).css({"background-color": colors[colorNum]});
 					$("#floor" + x).unbind("click");
@@ -41,6 +41,43 @@ $(document).ready(function() {
 			})(i);
 		}
 	}
+	var floorData = getUrlVars()["data"];
+	if (floorData != undefined) {
+		for (var k = 0; k < floorData.length; k++) {
+			//console.log(k);
+			//k += 1;
+			var f = floorData[k];
+			k += 1;
+			if (floorData[k] === "0") {
+				f = f + "0"
+				k += 1;
+			}
+			var colorNum;
+			if (floorData[k] === "R") {
+				colorNum = 0;
+			} else if (floorData[k] === "Y") {
+				colorNum = 1;
+			} else if (floorData[k] === "B") {
+				colorNum = 2;
+			} else if (floorData[k] === "G") {
+				colorNum = 3;
+			}
+			$("#floor" + f).css({"background-color": colors[colorNum]});
+			$("#floor" + f).unbind("click");
+			click[f] = colors[colorNum];
+			colorUsed[colorNum] = true;
+			var img = "";
+			for (var p = 0; p < 4; p++) {
+				if (colorUsed[p] == true) {
+					img = img + translation[p];
+				}
+			}
+			if (img.length == 0) {
+				img = "Standard";
+			}
+			$("#map").attr({"src": "img/" + img + ".png"});
+		}
+	}
 	$("#done").click(function() {
 		//$(window).animate({ scrollTop: 0 }, "slow");
 		$('body').animate({scrollTop:0}, 'slow');
@@ -52,13 +89,22 @@ $(document).ready(function() {
 		//setTimeout('$("#interface").hide()', 5000);
 		setTimeout('$("#interface").animate({opacity: 0.01}, 3000)', 1000);
 		setTimeout('$("#interface").hide(); $("#done").hide();', 4000);
-		setTimeout('$("#return").show();', 4500)
+		setTimeout('$("#return").show(); $("#select").show();', 4500)
 		$("#return").click(function() {
 			$("#return").hide();
+			$("#select").hide();
 			$("#interface").show();
 			$("#interface").css({"opacity": 1})
 			$("#done").show();
 		});
+		$(window).scroll(function() {
+			//console.log(e);
+			//console.log($(window).scrollTop());
+			//$("#lobby").css({"top": $(window).scrollTop()});
+			$("#return").css({"top": $(window).scrollTop() + 25});
+			$("#select").css({"top": $(window).scrollTop() + 50});
+		});
+		//setTimeout('alert("Click an elevator to walk over");', 5000);
 		//$("#return").show();
 		$("#lobby").click(function(e) {
 			//console.log(e);
@@ -102,6 +148,20 @@ $(document).ready(function() {
 					}
 				}
 			}
+			var data = "";
+			for (var j in click) {
+				data = data + j;
+				if (click[j] === "#C00000") {
+					data = data + "R";
+				} else if (click[j] === "#FFD700") {
+					data = data + "Y";
+				} else if (click[j] === "#1DA237") {
+					data = data + "G";
+				} else if (click[j] === "#0276FD") {
+					data = data + "B";
+				}
+			}
+			console.log(data);
 			console.log(floors);
 			//post_to_url("./above.html", {'color': floors[0]}, 'POST');
 			/* var http = new XMLHttpRequest();
@@ -125,7 +185,7 @@ $(document).ready(function() {
 						highlight = highlight + floors[i];
 					}
 				}
-				newURL = newURL + "&floors=" + highlight + "&current=" + current;
+				newURL = newURL + "&floors=" + highlight + "&current=" + current + "&data=" + data;
 				window.location = newURL;
 			}
 			//+ "?color=" + floors[0]
