@@ -24,7 +24,7 @@ body{
 
 .floor{
     width:500px;
-    color:#FFCC00;
+    color:#EEEEEE;
     font-size:30pt;
     font-family:Verdana;
     padding:10px;
@@ -44,7 +44,27 @@ body{
     -webkit-box-shadow: 0px 0px 3px 1px #222;
     box-shadow:         0px 0px 3px 1px #222;
     background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc)); /* for webkit browsers */
-    background: -moz-linear-gradient(top,  #ccc,  #000); /* for firefox 3.6+ */ 
-    
-    
+    background: -moz-linear-gradient(top,  #ccc,  #000); /* for firefox 3.6+ */    
+}
+
+#exit{
+    width:480px;
+    height:60px;
+    padding:10px;
+    font-size:25pt;
+    background-color:#CCCCCC;
+    margin-left:auto;
+    margin-right:auto;
+    font-family:Geneva;
+    margin-top:10px;
+    color:#333333;
+}
+
+input{
+    height:60px;
+    width:60px;
+    border-radius:30px;
+    background-color:red;
+    margin-right:20px;
+    float:left;
 }

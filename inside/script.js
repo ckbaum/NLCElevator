@@ -54,6 +54,10 @@ $(function() {
     $("#stay").click(function(){
         resume_elevator();
     });
+    $("#exitbutton").click(function(){
+        alert("You exit on floor "+curnum.toString()+", as an alarm sounds");
+        location.href=("../index.html?current="+curnum.toString());
+    });
 });
 
 countdown=function(){
