@@ -132,6 +132,17 @@ marquee{
 	z-index:-1;
 }
 
+.colorbox{
+	position:absolute;
+	top:400px;
+	left:600px;
+	width:30px;
+	height:40px;
+	z-index:1000;
+	padding:10px;
+	font-size:36px;
+}
+
 .confirmboxone{
 	position:absolute;
 	top:225px;

@@ -44,6 +44,33 @@ $(document).ready(function(){
 				}
 			}
 		}
+		
+		switch(color){
+			case '#C00000': // red
+				$('.colorbox').css({
+					'background':'#C00000'
+				});
+				$('.colorbox').text("B");
+				break;
+			case '#0276FD': //blue
+				$('.colorbox').css({
+					'background':'#0276FD'
+				});
+				$('.colorbox').text("C");
+				break;
+			case '#1DA237': //green
+				$('.colorbox').css({
+					'background':'#1DA237'
+				});
+				$('.colorbox').text("D");
+				break;
+			case '#FFD700': //yellow
+				$('.colorbox').css({
+					'background':'#FFD700'
+				});
+				$('.colorbox').text("A");
+				break;
+		}
 	
 		/* filters to figure out whether it's going up or down */
 		for(element in floors){
@@ -220,6 +247,8 @@ function goConnor(){
 <div id="list">
 	<marquee id="scrolltext" behavior="scroll" direction="left" scrollamount="5"></marquee>
 </div>
+
+<div class="colorbox"></div>
 
 <div id="image">
 	<img src="./images/above-opened.jpg"/>
