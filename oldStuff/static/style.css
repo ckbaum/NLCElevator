@@ -1,0 +1,119 @@
+.button {
+	border-radius: 50%; 
+	height: 80px;
+	width: 80px;
+	font-size: 45pt;
+}
+
+.buttonPad {
+	padding: 20px;
+	float: left;
+}
+
+.buttons {
+	width: 250px;
+	margin: auto;
+}
+
+.done {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	background-color: #C00000;
+	width: 175px;
+	height: 50px;
+	font-weight: bold;
+	color: white;
+}
+
+.return {
+	position: relative;
+	top: 25px;
+	left: 0px;
+	background-color: #C00000;
+	width: 225px;
+	height: 50px;
+	font-weight: bold;
+	color: white;
+	margin: auto;
+	display: None;
+}
+
+.mapDiv {
+	position: relative;
+}
+
+.line {
+	clear: both;
+}
+
+.map {
+	width: 250px; 
+	height: auto;
+	padding: 20px;
+}
+
+.lobby {
+	z-index: -1; 
+	position: absolute; 
+	top: 0px; 
+	left: 0px; 
+	width: 100%;
+}
+
+.lobby2 {
+	z-index: -2; 
+	position: absolute; 
+	top: 0px; 
+	left: 0px; 
+	width: 100%;
+}
+
+.test2 {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	top: 125px;
+	left: 75px;
+}
+
+.floorDisp {
+	font-weight: bold;
+	font-size: 100pt;
+}
+
+.instr {
+	position: relative;
+	font-weight: bold;
+	color: #D6D6D6;
+	top: 10px;
+}
+
+.select {
+	position: relative;
+	top: 50px;
+	left: 0px;
+	background-color: black;
+	height: 40px;
+	width: 215px;
+	text-align: center;
+	margin: auto;
+	display: None;
+} 
+
+.test {
+	position: absolute;
+	background-color: black;
+}
+
+.interface {
+	background-color: #87421F;
+	text-align: center;
+	width: 300px;
+	height: 1025px;
+	margin: auto;
+}
+
+body {
+	text-align: center;
+}

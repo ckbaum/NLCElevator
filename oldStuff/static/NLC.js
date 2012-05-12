@@ -14,7 +14,6 @@ $(document).ready(function() {
 	var click = {};
 	var colorUsed = [false, false, false, false];
 	var translation = ["R", "Y", "B", "G"];
-	var letterTrans = ["B", "A", "C", "D"];
 	for (var i = 1; i < 11; i++) {
 		if (parseInt(i) !== parseInt(current)) {
 			(function(x) {
@@ -31,12 +30,8 @@ $(document).ready(function() {
 						}
 					}
 					$("#map").attr({"src": "img/" + img + ".png"});
-					$("#floor" + x).attr("value", letterTrans[colorNum]);
-					setTimeout('$("#floor" + ' + x + ').attr("value", ' + x + ');', 2000);
 				});
 			})(i);
-		} else {
-			$("#floor" + i).attr("disabled", "disabled");
 		}
 	}
 	var floorData = getUrlVars()["data"];
@@ -79,7 +74,7 @@ $(document).ready(function() {
 		$('html').animate({scrollTop:0}, 'slow');
 		$("#lobby").animate({opacity: 0.01}, 3000);
 		$("#interface").css({"pointer-events": "none"});
-		setTimeout('$("#interface").animate({opacity: 0.01}, 1500)', 500);
+		setTimeout('$("#interface").animate({opacity: 0.01}, 1000)', 1000);
 		setTimeout('$("#interface").hide(); $("#done").hide();', 2000);
 		setTimeout('$("#return").show(); $("#select").show();', 2500)
 		$("#return").click(function() {
@@ -87,8 +82,27 @@ $(document).ready(function() {
 			$("#select").hide();
 			$("#interface").show();
 			$("#interface").css({"opacity": 1})
-			$("#interface").css({"pointer-events": "auto"});
 			$("#done").show();
+			for (var i = 1; i < 11; i++) {
+				if (parseInt(i) !== parseInt(current)) {
+					(function(x) {
+						$("#floor" + x).click(function() {
+							var colorNum = Math.floor(Math.random()*4);
+							$("#floor" + x).css({"background-color": colors[colorNum]});
+							$("#floor" + x).unbind("click");
+							click[x] = colors[colorNum];
+							colorUsed[colorNum] = true;
+							var img = "";
+							for (var k = 0; k < 4; k++) {
+								if (colorUsed[k] == true) {
+									img = img + translation[k];
+								}
+							}
+							$("#map").attr({"src": "img/" + img + ".png"});
+						});
+					})(i);
+				}
+			}
 		});
 		$(window).scroll(function() {
 			$("#return").css({"top": $(window).scrollTop() + 25});

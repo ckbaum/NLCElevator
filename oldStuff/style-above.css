@@ -1,0 +1,181 @@
+*{
+	font-family:Futura, sans-serif;
+	background:#888;
+}
+
+#wrapper{
+	position:relative;
+	top:2px;
+	left:250px;
+	margin:auto;
+}
+
+#arrow{
+	position:absolute;
+	top:25px;
+	left:30px;
+	width:80px;
+	background:white;
+	border: 2px solid #333;
+	border-right:0px;
+	height:80px;
+}
+
+#eta{
+	position: absolute;
+	top: 25px;
+	left:110px;
+	width:160px;
+	height:80px;
+	border: 2px solid #333;
+	border-right:0px;
+	background:white;
+	overflow:hidden;
+}
+
+#eta_label{
+	font-size:12px;
+	text-align:center;
+	margin-top:6px;
+	margin-bottom:2px;
+	background:white;
+}
+
+#time{
+	position:absolute;
+	margin-top:4px;
+	left:22px;
+	font-size:40px;
+	text-align:left;
+}
+
+#buttons{
+	position:absolute;
+	top:25px;
+	left:270px;
+	width:168px;
+	height:80px;
+	border: 2px solid #333;
+	border-right:0px;
+	background:white;
+	overflow:hidden;
+}
+
+#button_holder{
+	position:absolute;
+	top:10px;
+	left:10px;
+	width:150px;
+	background:white;
+}
+
+.button{
+	margin:1px;
+	margin-bottom:10px;
+	color:black;
+	background:#CCC;
+	border:1px groove #BBB;
+	
+	border-radius: 50%; 
+	height: 22px;
+	width: 22px;
+	font-size: 7pt;
+}
+
+#list{
+	position:absolute;
+	top:25px;
+	left:438px;
+	width:280px;
+	height:80px;
+	border:2px solid #333;
+	font-size:60px;
+	text-align:center;
+	background:white;
+	overflow:hidden;
+}
+
+#scrolltext1 {
+	position:absolute;
+	left406px;
+	top:0px;
+	width:280px;
+	height:80px;
+}
+
+#scrolltext2 {
+	position:absolute;
+	left:686px;
+	top:0px;
+	width:280px;
+	height:80px;
+}
+
+marquee{
+	background:white;
+}
+
+#image img{
+	width:750px;
+}
+
+.confirmboxone{
+	position:absolute;
+	z-index:-1;
+	top:150px;
+	left:250px;
+	width:300px;
+	border: 10px solid #933;
+	background:white;
+	padding: 10px;
+	text-align:center;
+}
+
+.confirmboxone button{
+	font-size:15px;
+	background:#CCC;
+}
+
+.confirmboxtwo{
+	position:absolute;
+	z-index:-1;
+	top:150px;
+	left:250px;
+	width:300px;
+	border: 10px solid #933;
+	background:white;
+	padding: 10px;
+	text-align:center;
+}
+
+.confirmboxtwo button{
+	font-size:15px;
+	background:#CCC;
+}
+
+.return {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	height: 50px;
+	width: 175px;
+	background-color: #C00000;
+	font-weight: bold;
+	color: white;
+}
+
+.floorNumber {
+	position: absolute;
+	top: 175px;
+	left: 15px;
+	height: 120px;
+	width: 120px;
+	text-align: center;
+	background-color: transparent;
+}
+
+.floorDisp {
+	font-weight: bold;
+	font-size: 75pt;
+	background-color: transparent;
+}
