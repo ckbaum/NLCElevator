@@ -23,16 +23,46 @@ $(document).ready(function() {
 					$("#floor" + x).css({"background-color": colors[colorNum]});
 					$("#floor" + x).unbind("click");
 					click[x] = colors[colorNum];
-					colorUsed[colorNum] = true;
 					var img = "";
-					for (var k = 0; k < 4; k++) {
-						if (colorUsed[k] == true) {
-							img = img + translation[k];
+					if (colorUsed[colorNum] == false) {
+						colorUsed[colorNum] = true;
+						for (var k = 0; k < 4; k++) {
+							if (colorUsed[k] == true) {
+								img = img + translation[k];
+							}
 						}
+						$("#map").attr({"src": "img/" + img + ".png"});
+					} else {
+						var img = "";
+						var img2 = "";
+						colorUsed[colorNum] = false;
+						for (var k = 0; k < 4; k++) {
+							if (colorUsed[k] == true) {
+								img2 = img2 + translation[k];
+							}
+						}
+						if (img2 === "") {
+							img2 = "Standard";
+						}
+						$("#map").attr({"src": "img/" + img2 + ".png"});
+						colorUsed[colorNum] = true;
+						for (var k = 0; k < 4; k++) {
+							if (colorUsed[k] == true) {
+								img = img + translation[k];
+							}
+						}
+						setTimeout(function() {
+							$("#map").attr({"src": "img/" + img + ".png"});
+						}, 1000);
 					}
-					$("#map").attr({"src": "img/" + img + ".png"});
+					(function(num) {
+						$("#floor" + x).click(function() {
+							$("#floor" + x).attr("value", letterTrans[num]);
+							setTimeout('$("#floor" + ' + x + ').attr("value", ' + x + ');', 1500);
+						});
+					})(colorNum);
 					$("#floor" + x).attr("value", letterTrans[colorNum]);
-					setTimeout('$("#floor" + ' + x + ').attr("value", ' + x + ');', 2000);
+					setTimeout('$("#floor" + ' + x + ').attr("value", ' + x + ');', 1500);
 				});
 			})(i);
 		} else {
