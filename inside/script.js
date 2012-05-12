@@ -11,6 +11,13 @@ $(function() {
     $("#dialog").css("visibility", "hidden");
     down=getUrlVars()["direction"]==="down";
 	var floors2 = getUrlVars()['floors'].split('x');
+	
+	// the following three lines to display floors in other direction - jskao
+	var remaining = getUrlVars()['remain'].split('x');
+	for(var i=remaining.length-1; i >= 0; i--){
+		floors2.push(remaining[i]);
+	}
+	
     for(var i=0; i < floors2.length; i++){
         var floor=$("<div></div>");
         floor.addClass("floor");
@@ -23,6 +30,17 @@ $(function() {
         floors.push(floor);
         $("#floorlist").prepend(floor);
     }
+    
+    /*var remaining = getUrlVars()['remain'].split('x');
+    for(var i=0; i < remaining.length; i++){
+        var remains=$("<div></div>");
+        remains.addClass("floor");
+        var num = remaining[i];
+        floor.html(num.toString());
+        floors.push(floor);
+        $("#floorlist").prepend(floor);
+    }*/
+    
     if(down){
         curind=floors.length-1;
     }
