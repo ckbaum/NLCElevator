@@ -168,8 +168,21 @@ function stay(){
 
 /* function called when user wants to go into elevator */
 function goConnor(){
+	
+	/* pass back floors not yet gone to yet */
+	var left_floors = new Array();
+	for(element in floors){
+		if (direction == "up" && parseInt(floors[element]) < parseInt(current)) {
+			left_floors.push(floors[element]);
+		} else if (direction == "down" && parseInt(floors[element]) > parseInt(current)) {
+			left_floors.push(floors[element]);
+		}
+	}
+	left_floors = left_floors.join('x');
+
 	floors = filtered_floors.join('x');
-	window.location = "./inside/index.html?direction="+direction+"&floors=" + floors;
+		
+	window.location = "./inside/index.html?direction="+direction+"&floors=" + floors+"&remain=" + left_floors;
 }
 
 </script>
