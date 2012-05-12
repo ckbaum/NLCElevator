@@ -80,20 +80,20 @@ $(document).ready(function(){
 		if(direction != "up" && direction != "down"){
 			if(up >= down){
 				direction = "up";
-				$("#arrow").append('<img src="img/UpArrow.png" width=100% />');
+				$("#arrow").append('<img src="images/UpArrow.png"/>');
 			}
 			if(down > up){
 				direction = "down";
-				$("#arrow").append('<img src="img/DownArrow.png" width=100% />');
+				$("#arrow").append('<img src="images/DownArrow.png"/>');
 			}
 		}else{
 			if(direction == "up"){
 				direction = "up";
-				$("#arrow").append('<img src="img/UpArrow.png" width=100% />');
+				$("#arrow").append('<img src="images/UpArrow.png"/>');
 			}
 			if(direction == "down"){
 				direction = "down";
-				$("#arrow").append('<img src="img/DownArrow.png" width=100% />');
+				$("#arrow").append('<img src="images/DownArrow.png"/>');
 			}
 		}
 	    if(filtered_floors.length<4){

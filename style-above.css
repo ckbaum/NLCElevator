@@ -22,6 +22,14 @@ body{
 	border: 2px solid #333;
 	border-right:0px;
 	height:80px;
+	overflow:hidden;
+}
+
+#arrow img{
+	position:absolute;
+	height:80px;
+	width:auto;
+	left:-4px;
 }
 
 #eta{
