@@ -74,7 +74,6 @@ $(document).ready(function(){
 	
 		/* filters to figure out whether it's going up or down */
 		for(element in floors){
-			$(".button#"+floors[element]).css("background", color);
 			if(direction != "up" && direction != "down"){
 				if(up >= down){ // going up
 					if(parseInt(floors[element]) > parseInt(current)) {

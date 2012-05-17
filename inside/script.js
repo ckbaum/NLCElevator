@@ -1,6 +1,6 @@
 var floors=[];
 var target=8;
-var seconds=Math.round(Math.random()*5)+4;
+var seconds=Math.round(Math.random()*5)+14;
 var curfloor=undefined;
 var curnum;
 var curind=0;
@@ -13,10 +13,18 @@ $(function() {
 	var floors2 = getUrlVars()['floors'].split('x');
 	
 	// the following three lines to display floors in other direction - jskao
-	//	var remaining = getUrlVars()['remain'].split('x');
-	//for(var i=remaining.length-1; i >= 0; i--){
-	//	floors2.push(remaining[i]);
-	//}
+	var remaining = getUrlVars()['remain'].split('x');
+	if(remaining.length != 0){
+	    if(down == false){
+		for(var i=remaining.length-1; i >= 0; i--){
+		    floors2.push(remaining[i]);
+		}
+	    }else{
+		for(var i=0; i<=remaining.length-1; i++){
+		    floors2.unshift(remaining[i]);
+		}
+	    }
+	}
 	
     for(var i=0; i < floors2.length; i++){
         var floor=$("<div></div>");
@@ -64,7 +72,12 @@ countdown=function(){
     if(seconds>0){
         seconds-=1;
     }
-    curfloor.html(curnum+": arriving in 00:0"+seconds.toString());
+    if(seconds>9){
+        curfloor.html(curnum+": arriving in 00:"+seconds.toString());
+    }
+    else{
+        curfloor.html(curnum+": arriving in 00:0"+seconds.toString());
+    }
     if(seconds==0){
         show_confirm(parseInt(curnum));
     }

@@ -1,6 +1,6 @@
 var floors=[];
 var target=8;
-var seconds=Math.round(Math.random()*5)+4;
+var seconds=Math.round(Math.random()*5)+14;
 var curfloor=undefined;
 var curnum;
 var curind=0;
@@ -14,8 +14,10 @@ $(function() {
 	
 	// the following three lines to display floors in other direction - jskao
 	var remaining = getUrlVars()['remain'].split('x');
-	for(var i=remaining.length-1; i >= 0; i--){
+	if(remaining.length != 0){
+	    for(var i=remaining.length-1; i >= 0; i--){
 		floors2.push(remaining[i]);
+	    }
 	}
 	
     for(var i=0; i < floors2.length; i++){

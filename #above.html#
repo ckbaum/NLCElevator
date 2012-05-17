@@ -74,31 +74,30 @@ $(document).ready(function(){
 	
 		/* filters to figure out whether it's going up or down */
 		for(element in floors){
-			$(".button#"+floors[element]).css("background", color);
 			if(direction != "up" && direction != "down"){
 				if(up >= down){ // going up
 					if(parseInt(floors[element]) > parseInt(current)) {
 						$(".button#"+floors[element]).css("background", color);
-						filtered_floors.push(floors[element]);
+						floors.push(floors[element]);
 					}
 				}
 				if(down > up){ // going down
 					if(parseInt(floors[element]) < parseInt(current)) {
 						$(".button#"+floors[element]).css("background", color);
-						filtered_floors.push(floors[element]);
+						floors.push(floors[element]);
 					}
 				}
 			}else{
 				if(direction == "up"){ // going up
 					if(parseInt(floors[element]) > parseInt(current)) {
 						$(".button#"+floors[element]).css("background", color);
-						filtered_floors.push(floors[element]);
+						floors.push(floors[element]);
 					}
 				}
 				if(direction == "down"){ // going down
 					if(parseInt(floors[element]) < parseInt(current)) {
 						$(".button#"+floors[element]).css("background", color);
-						filtered_floors.push(floors[element]);
+						floors.push(floors[element]);
 					}
 				}
 			}
