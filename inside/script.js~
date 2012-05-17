@@ -13,10 +13,10 @@ $(function() {
 	var floors2 = getUrlVars()['floors'].split('x');
 	
 	// the following three lines to display floors in other direction - jskao
-	//	var remaining = getUrlVars()['remain'].split('x');
-	//for(var i=remaining.length-1; i >= 0; i--){
-	//	floors2.push(remaining[i]);
-	//}
+	var remaining = getUrlVars()['remain'].split('x');
+	for(var i=remaining.length-1; i >= 0; i--){
+		floors2.push(remaining[i]);
+	}
 	
     for(var i=0; i < floors2.length; i++){
         var floor=$("<div></div>");
